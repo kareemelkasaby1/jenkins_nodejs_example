@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app-deployment
-        image: kareemelkasaby/vodafonetask1node
+        image: kareemelkasaby/vodafonetask1node:latest
         resources:
           limits:
             memory: "128Mi"
@@ -23,7 +23,7 @@ spec:
         - containerPort: 3000
         env:
           - name: HOST
-            value: jenkins-nodeport
+            value: mysql-nodeport
           - name: DATABASE
             value: task1database
           - name: USERNAME

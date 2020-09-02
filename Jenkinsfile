@@ -8,7 +8,7 @@ pipeline {
         stage('Example') {
             steps {
                 echo "Hello ${params.COMMIT_TAG}"
-                sh 'git clone "https://github.com/kareemelkasaby1/jenkins_nodejs_example"'
+                /* groovylint-disable-next-line GStringExpressionWithinString */
                 sh 'git  checkout -b k8s_task `${params.COMMIT_TAG}`'
             }
         }

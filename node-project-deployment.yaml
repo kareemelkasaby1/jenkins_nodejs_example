@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      component: node-app-deployment
+  template:
+    metadata:
+      labels:
+        component: node-app-deployment
+    spec:
+      containers:
+      - name: node-app-deployment
+        image: kareemelkasaby/vodafonetask1node
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+        env:
+          - name: HOST
+            value: jenkins-nodeport
+          - name: DATABASE
+            value: task1database
+          - name: USERNAME
+            valueFrom:
+                secretKeyRef:
+                  name: mysql-user
+                  key: MYSQL_USER
+          - name: PASSWORD
+            valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysqluserpassword

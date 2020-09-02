@@ -1,7 +1,8 @@
+/* groovylint-disable-next-line CompileStatic */
 pipeline {
     agent any
     parameters {
-        string(name: 'COMMIT_TAG', defaultValue: 'a197e3d7c66c041541fcaa1302803da7b4daf028')
+        string(name: 'COMMIT_TAG', defaultValue: '')
     }
     stages {
         stage('Example') {

@@ -8,8 +8,8 @@ pipeline {
         stage('Example') {
             steps {
                 echo "Hello ${params.COMMIT_TAG}"
-                git clone "https://github.com/kareemelkasaby1/jenkins_nodejs_example"
-                git  checkout -b k8s_task ${params.COMMIT_TAG}
+                sh 'git clone "https://github.com/kareemelkasaby1/jenkins_nodejs_example"'
+                sh 'git  checkout -b k8s_task `${params.COMMIT_TAG}`'
             }
         }
     }

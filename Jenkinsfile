@@ -2,7 +2,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'COMMIT_TAG', defaultValue: '')
+        string(name: 'COMMIT_TAG')
     }
     stages {
         stage('Example') {

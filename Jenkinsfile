@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('cloning and checkout') {
             steps {
+                sh 'su jenkins'
                 sh "kubectl apply -f node-project-deployment.yaml --namespace=${params.NAMESPACE}"
             }
         }

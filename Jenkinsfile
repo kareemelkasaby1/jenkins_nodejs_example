@@ -10,9 +10,5 @@ pipeline {
                 sh "kubect apply -f node-project-deployment.yaml --namespace=${params.NAMESPACE}"
             }
         }
-        // stage('build and push') {
-        //     steps {   
-        //     }
-        // }
     }
 }

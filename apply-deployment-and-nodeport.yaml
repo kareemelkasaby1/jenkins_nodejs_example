@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+    - name: create deployment
+      shell: kubectl apply -f node-project-deployment.yaml --namespace=NAMESPACE_USERCHOOSE
+    - name: create nodeport
+      shell: kubectl apply -f node-service.yml --namespace=NAMESPACE_USERCHOOSE

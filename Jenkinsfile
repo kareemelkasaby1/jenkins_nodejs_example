@@ -18,16 +18,20 @@ pipeline {
 
                 }
                 sh 'su jenkins'
+                sh "sed -i 's/NAMESPACE_USERCHOOSE/${params.NAMESPACE}/g' *.yml"
                 sh """
                     if ! kubectl get secrets mysql-user --namespace=${params.NAMESPACE} 
                     then
-                        kubectl create secret --namespace=${params.NAMESPACE}  generic mysql-user --from-literal=MYSQL_USER=$MYSQL_USERNAME
+                        sed -i 's/MYSQL_USERNAME/$MYSQL_USERNAME/g' create-username-secret.yml
+                        ansible-playbook create-username-secret.yml
                     fi
                 """
                 sh """
                     if ! kubectl get secrets mysql-secret --namespace=${params.NAMESPACE} 
                     then
-                        kubectl create secret --namespace=${params.NAMESPACE}  generic mysql-secret --from-literal=mysqlrootpassword=$MYSQL_USER_PASSWORD --from-literal=mysqluserpassword=$MYSQL_ROOT_PASSWORD
+                        sed -i 's/MYSQL_USER_PASSWORD/$MYSQL_USER_PASSWORD/g' create-passwords-secret.yml
+                        sed -i 's/MYSQL_ROOT_PASSWORD/$MYSQL_ROOT_PASSWORD/g' create-passwords-secret.yml
+                        ansible-playbook create-passwords-secret.yml
                     fi
                 """
                 sh "kubectl apply -f node-project-deployment.yaml --namespace=${params.NAMESPACE}"

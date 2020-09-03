@@ -19,12 +19,14 @@ pipeline {
                 }
                 sh 'su jenkins'
                 sh """
-                    if ! kubectl get secrets mysql-user --namespace=${params.NAMESPACE}
+                    if ! kubectl get secrets mysql-user --namespace=${params.NAMESPACE} 
+                    then
                         kubectl create secret --namespace=${params.NAMESPACE}  generic mysql-user --from-literal=MYSQL_USER=$MYSQL_USERNAME
                     fi
                 """
                 sh """
-                    if ! kubectl get secrets mysql-secret --namespace=${params.NAMESPACE}
+                    if ! kubectl get secrets mysql-secret --namespace=${params.NAMESPACE} 
+                    then
                         kubectl create secret --namespace=${params.NAMESPACE}  generic mysql-secret --from-literal=mysqlrootpassword=$MYSQL_USER_PASSWORD --from-literal=mysqluserpassword=$MYSQL_ROOT_PASSWORD
                     fi
                 """

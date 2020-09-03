@@ -3,8 +3,10 @@ kind: Service
 metadata:
   name: node-nodeport
 spec:
+  type: NodePort
   selector:
     component: node-app-deployment
   ports:
   - port: 3000
     targetPort: 3000
+    nodePort: 32001

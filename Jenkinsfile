@@ -35,7 +35,7 @@ pipeline {
                     fi
                 """
                 sh "kubectl apply -f node-project-deployment.yaml --namespace=${params.NAMESPACE}"
-                sh "kubectl apply -f node-service.yml --namespace=${params.NAMESPACE}"
+                sh "kubectl apply -f node-service.yaml --namespace=${params.NAMESPACE}"
             }
         }
     }

@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('cloning and checkout') {
             steps {
-                sh "kubect apply -f node-project-deployment.yaml --namespace=${params.NAMESPACE}"
+                sh "kubectl apply -f node-project-deployment.yaml --namespace=${params.NAMESPACE}"
             }
         }
     }

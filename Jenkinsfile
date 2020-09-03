@@ -10,10 +10,10 @@ pipeline {
                 script {
                     /* groovylint-disable-next-line DuplicateStringLiteral, NestedBlockDepth */
                     if (params.NAMESPACE == 'dev') {
-                            sh "sed -i 's/port_value/32001/g' node-service.yml"
+                            sh "sed -i 's/port_value/32001/g' node-service.yaml"
                         /* groovylint-disable-next-line NestedBlockDepth */
                     } else {
-                            sh "sed -i 's/port_value/32000/g' node-service.yml"
+                            sh "sed -i 's/port_value/32000/g' node-service.yaml"
                     }
 
                 }

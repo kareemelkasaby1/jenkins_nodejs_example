@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('cloning and checkout') {
             steps {
+                sh 'su jenkins'
                 sh "docker login -u '$DOCKERHUB_USER' -p '$DOCKERHUB_PASS' 192.168.99.122:32521"
                 script {
                     /* groovylint-disable-next-line DuplicateStringLiteral, NestedBlockDepth */
@@ -18,7 +19,6 @@ pipeline {
                     }
 
                 }
-                sh 'su jenkins'
                 sh "sed -i 's/NAMESPACE_USERCHOOSE/${params.NAMESPACE}/g' *.yml"
                 sh """
                     if ! kubectl get secrets mysql-user --namespace=${params.NAMESPACE} 

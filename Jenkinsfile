@@ -8,7 +8,7 @@ pipeline {
         stage('cloning and checkout') {
             steps {
                 sh 'su jenkins'
-                sh "docker login -u '$DOCKERHUB_USER' -p '$DOCKERHUB_PASS' 192.168.99.122:32521"
+                sh "docker login 192.168.99.122:32521 --username '$DOCKERHUB_USER' --password '$DOCKERHUB_PASS'"
                 script {
                     /* groovylint-disable-next-line DuplicateStringLiteral, NestedBlockDepth */
                     if (params.NAMESPACE == 'dev') {

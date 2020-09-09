@@ -12,6 +12,8 @@ spec:
       labels:
         component: node-app-deployment
     spec:
+      imagePullSecrets:
+        - name: nexus-login
       containers:
       - name: node-app-deployment
         image: 192.168.99.122:32521/vodafonetask1node:latest
@@ -19,8 +21,6 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
-        imagePullSecrets:
-          - name: nexus-login
         ports:
         - containerPort: 3000
         env:

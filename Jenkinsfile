@@ -15,11 +15,11 @@ pipeline {
         stage('build and push') {
             steps {
                 /* groovylint-disable-next-line LineLength --*/
-                sh "docker build -t kareemelkasaby/vodafonetask1node:${params.COMMIT_TAG} -t kareemelkasaby/vodafonetask1node:latest ."
+                sh "docker build -t 192.168.99.122:32521/vodafonetask1node:${params.COMMIT_TAG} -t 192.168.99.122:32521/vodafonetask1node:latest ."
                 /* groovylint-disable-next-line GStringExpressionWithinString */
-                sh "docker login -u '$DOCKERHUB_USER' -p '$DOCKERHUB_PASS'"
-                sh "docker push kareemelkasaby/vodafonetask1node:${params.COMMIT_TAG}"
-                sh 'docker push kareemelkasaby/vodafonetask1node:latest'
+                sh "docker login -u '$DOCKERHUB_USER' -p '$DOCKERHUB_PASS' 192.168.99.122:32521"
+                sh "docker push 192.168.99.122:32521/vodafonetask1node:${params.COMMIT_TAG}"
+                sh 'docker push 192.168.99.122:32521/vodafonetask1node:latest'
             }
         }
     }

@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('cloning and checkout') {
             steps {
+                sh "docker login -u '$DOCKERHUB_USER' -p '$DOCKERHUB_PASS' 192.168.99.122:32521"
                 script {
                     /* groovylint-disable-next-line DuplicateStringLiteral, NestedBlockDepth */
                     if (params.NAMESPACE == 'dev') {

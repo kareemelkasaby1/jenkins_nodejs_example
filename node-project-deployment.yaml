@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app-deployment
-        image: 192.168.99.122:325321/vodafonetask1node:latest
+        image: 192.168.99.122:32521/vodafonetask1node:latest
         resources:
           limits:
             memory: "128Mi"

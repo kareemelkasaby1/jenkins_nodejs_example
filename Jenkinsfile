@@ -8,7 +8,8 @@ pipeline {
         stage('cloning and checkout') {
             steps {
                 sh 'su jenkins'
-                sh "docker login 192.168.99.122:32521 --username '$DOCKERHUB_USER' --password '$DOCKERHUB_PASS'"
+                /* groovylint-disable-next-line LineLength */
+                sh "kubectl create secret docker-registry nexus-login --docker-server=192.168.99.122:32521 --docker-username='$DOCKERHUB_USER' --docker-password='$DOCKERHUB_PASS'"
                 script {
                     /* groovylint-disable-next-line DuplicateStringLiteral, NestedBlockDepth */
                     if (params.NAMESPACE == 'dev') {

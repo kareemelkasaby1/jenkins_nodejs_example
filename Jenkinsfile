@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'su jenkins'
                 /* groovylint-disable-next-line LineLength */
-                sh "kubectl create secret docker-registry nexus-login --docker-server=192.168.99.122:32521 --docker-username='$DOCKERHUB_USER' --docker-password='$DOCKERHUB_PASS'"
+                sh "kubectl create secret docker-registry nexus-login --docker-server=192.168.99.122:32521 --docker-username='$DOCKERHUB_USER' --docker-password='$DOCKERHUB_PASS' --namespace=${params.NAMESPACE}"
                 script {
                     /* groovylint-disable-next-line DuplicateStringLiteral, NestedBlockDepth */
                     if (params.NAMESPACE == 'dev') {
